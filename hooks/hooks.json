@@ -1,0 +1,32 @@
+{
+  "description": "WatchCode deterministic intervention notifications",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${PLUGIN_ROOT}/dist/src/codex-hook.js",
+            "timeout": 15,
+            "statusMessage": "Loading WatchCode notification policy",
+            "additionalContextLimit": 600
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${PLUGIN_ROOT}/dist/src/codex-hook.js",
+            "async": true,
+            "timeout": 15,
+            "statusMessage": "Notifying through WatchCode"
+          }
+        ]
+      }
+    ]
+  }
+}

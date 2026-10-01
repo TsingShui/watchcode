@@ -1,0 +1,30 @@
+name: Bug report
+description: Report a reproducible WatchCode problem
+body:
+  - type: markdown
+    attributes:
+      value: Do not include credentials, personal paths, transcripts, device identifiers, or private notification content.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the behavior using redacted examples.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Provide minimal, privacy-safe steps.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: WatchCode version
+      placeholder: 0.1.0
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Provide only macOS, watchOS, Node.js, Pi, and/or Codex versions. Do not include usernames or paths.

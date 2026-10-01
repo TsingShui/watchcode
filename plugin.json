@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "watchcode",
+  "version": "0.1.0",
+  "description": "Privacy-first intervention and completion notifications for Codex",
+  "license": "MIT",
+  "keywords": ["notifications", "apple-watch", "coding-agent"],
+  "extensions": {
+    "com.openai": {
+      "hooks": "./hooks/hooks.json",
+      "interface": {
+        "displayName": "WatchCode",
+        "shortDescription": "Notify when Codex needs you or finishes",
+        "category": "Productivity",
+        "capabilities": ["Write", "OpenWorld"]
+      }
+    }
+  }
+}

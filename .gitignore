@@ -1,0 +1,11 @@
+node_modules/
+dist/
+coverage/
+.watchcode/
+*.watchcode-backup-*
+.env
+.env.*
+!.env.example
+.pi/
+*.log
+.DS_Store

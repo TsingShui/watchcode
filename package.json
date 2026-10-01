@@ -1,0 +1,74 @@
+{
+  "name": "watchcode",
+  "version": "0.1.0",
+  "description": "Privacy-first Apple Watch notifications for Pi and Codex via Apple Reminders",
+  "homepage": "https://github.com/TsingShui/watchcode#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TsingShui/watchcode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TsingShui/watchcode/issues"
+  },
+  "type": "module",
+  "bin": {
+    "watchcode": "./dist/src/cli.js",
+    "watchcode-mcp": "./dist/src/mcp-bundle.js"
+  },
+  "files": [
+    "dist/src",
+    "skills",
+    "hooks",
+    "plugin.json",
+    "mcp.json",
+    "README.md",
+    "SECURITY.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "pi-package",
+    "codex",
+    "notifications",
+    "apple-watch"
+  ],
+  "pi": {
+    "extensions": [
+      "./dist/src/pi-extension.js"
+    ]
+  },
+  "scripts": {
+    "build": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\" && tsc -p tsconfig.json && esbuild src/mcp.ts --bundle --platform=node --format=esm --target=node22 --outfile=dist/src/mcp-bundle.js",
+    "prepack": "npm run build",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test dist/test/**/*.test.js",
+    "format:check": "prettier --check .",
+    "format": "prettier --write .",
+    "check": "npm run format:check && npm run typecheck && npm test"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*"
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-ai": {
+      "optional": true
+    },
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "^1.31.0",
+    "@earendil-works/pi-ai": "^0.99.2",
+    "@earendil-works/pi-coding-agent": "^0.99.2",
+    "@types/node": "^24.10.0",
+    "esbuild": "^0.28.2",
+    "prettier": "^3.6.2",
+    "typescript": "^7.0.2"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT"
+}
